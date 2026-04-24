@@ -21,12 +21,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            /* Ganti height: 100vh; menjadi min-height agar bisa scroll */
+            min-height: 100vh; 
+            margin: 0;
             background: var(--bg-gradient);
             font-family: 'Poppins', sans-serif;
-            overflow: hidden;
+            /* Hapus overflow: hidden; agar bisa di-scroll */
+            overflow-y: auto; 
+            overflow-x: hidden;
             position: relative;
-            transition: all 1s ease; /* Transisi halus saat ganti warna tema */
+            transition: all 1s ease;
+            padding: 20px 0; /* Tambah padding agar tidak nempel pojok layar */
         }
 
         /* Background Animasi Partikel Hati */
@@ -66,14 +71,15 @@
             text-align: center;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            padding: 40px;
+            padding: 30px;
             border-radius: 30px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
+            max-width: 90%; /* Lebih fleksibel di layar HP */
+            width: 400px;
             z-index: 10;
             border: 2px solid rgba(255, 255, 255, 0.5);
             transition: all 0.5s ease;
+            margin: 20px auto; /* Biar ada jarak atas bawah saat scroll */
         }
 
         h1 { 
@@ -193,7 +199,7 @@
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 6000);
         }
-        setInterval(createFallingHeart, 400);
+        setInterval(createFallingHeart, 800);
 
         // --- 2. Jam Realtime ---
         function updateClock() {
