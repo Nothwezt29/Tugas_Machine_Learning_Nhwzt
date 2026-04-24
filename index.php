@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Untuk Hafsah Nurul Alamin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-color: #fce4ec;
+            --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            --main-pink: #ff4081;
+            --dark-pink: #d81b60;
+            --text-color: #ad1457;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--bg-gradient);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+            transition: all 1s ease; /* Transisi halus saat ganti warna tema */
+        }
+
+        /* Background Animasi Partikel Hati */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 64, 129, 0.3);
+            font-size: 20px;
+            user-select: none;
+            z-index: 0;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Love Utama */
+        .heart-main {
+            font-size: 100px;
+            cursor: pointer;
+            animation: heartbeat 1.2s infinite;
+            margin-bottom: 20px;
+            user-select: none;
+            z-index: 10;
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
+            color: var(--main-pink);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.5s ease;
+        }
+
+        h1 { 
+            color: var(--dark-pink); 
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .romantic-text {
+            color: var(--text-color);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        #display-area img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px 0;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            background: var(--main-pink);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* Tombol Tidak - Kejar-kejaran */
+        #btn-no {
+            background: #9e9e9e;
+            z-index: 999;
+            transition: left 0.15s ease, top 0.15s ease;
+        }
+
+        #clock {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark-pink);
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 1s forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="heart-container" class="heart-main">❤</div>
+
+    <div class="container">
+        <div id="question-section">
+            <h1>Untuk Hafsah...</h1>
+            <p style="margin-bottom: 15px;">Ada yang ingin aku tanyakan padamu...</p>
+            <h2 style="color: #d81b60; margin-bottom: 20px;">Mau kah kamu jadi pacarku?</h2>
+            <div class="btn-group">
+                <button id="btn-yes" onclick="acceptLove()">Ya, Aku Mau</button>
+                <button id="btn-no" onmouseover="moveButton()">Gak Mau</button>
+            </div>
+        </div>
+
+        <div id="romance-section" class="hidden fade-in">
+            <h1>Terima Kasih, Cantik...</h1>
+            <p class="romantic-text">
+                "Aku tidak pernah menyangka bahwa kehadiranmu akan mengubah segalanya. Hafsah, bersamamu aku menemukan arti kenyamanan yang sesungguhnya. <br><br>
+                Terima kasih telah memberiku kesempatan untuk menjadi bagian dari harimu. Aku berjanji akan menjagamu, menghargaimu, dan berusaha menjadi alasan di balik senyumanmu setiap hari. Mari kita tulis cerita indah kita mulai detik ini."
+            </p>
+            <button onclick="showFinal()">Buka Hatiku ✨</button>
+        </div>
+
+        <div id="display-area" class="hidden fade-in">
+            <h2 style="color: var(--main-pink); font-family: 'Dancing Script'; font-size: 2.2rem;">Hafsah Nurul Alamin</h2>
+            <div id="clock">00:00:00</div>
+            <img src="hapsah.jpg" onerror="this.src='https://via.placeholder.com/150/ff4081/ffffff?text=Hafsah'" alt="Foto Hafsah">
+            <br>
+            <button onclick="magicThemeChange()">Ganti Suasana Cinta</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Animasi Background Hati ---
+        function createFallingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createFallingHeart, 400);
+
+        // --- 2. Jam Realtime ---
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString('id-ID', { hour12: false });
+        }
+        setInterval(updateClock, 1000);
+
+        // --- 3. Tombol "Tidak" Menghindar ---
+        function moveButton() {
+            const btn = document.getElementById('btn-no');
+            // Menentukan posisi acak
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 50);
+            
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // --- 4. Alur Interaksi ---
+        function acceptLove() {
+            document.getElementById('question-section').classList.add('hidden');
+            document.getElementById('romance-section').classList.remove('hidden');
+        }
+
+        function showFinal() {
+            document.getElementById('romance-section').classList.add('hidden');
+            document.getElementById('display-area').classList.remove('hidden');
+            updateClock();
+        }
+
+        // --- 5. Ganti Tema (Warna Hati, Background, Teks) ---
+        const themes = [
+            { bg: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%)', heart: '#ff4081', text: '#ad1457' },
+            { bg: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', heart: '#2196f3', text: '#0d47a1' },
+            { bg: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)', heart: '#9c27b0', text: '#4a148c' },
+            { bg: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)', heart: '#4caf50', text: '#1b5e20' },
+            { bg: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)', heart: '#ff9800', text: '#e65100' },
+            { bg: 'linear-gradient(135deg, #2c3e50 0%, #000000 100%)', heart: '#e74c3c', text: '#ffffff' }
+        ];
+        let themeIndex = 0;
+
+        function magicThemeChange() {
+            themeIndex = (themeIndex + 1) % themes.length;
+            const t = themes[themeIndex];
+            
+            // Ubah Background body
+            document.body.style.background = t.bg;
+            
+            // Ubah Warna Hati
+            const heart = document.getElementById('heart-container');
+            heart.style.color = t.heart;
+            
+            // Ubah warna variabel CSS (untuk tombol & teks)
+            document.documentElement.style.setProperty('--main-pink', t.heart);
+            document.documentElement.style.setProperty('--dark-pink', t.text);
+            document.documentElement.style.setProperty('--text-color', t.text);
+        }
+
+        // Ganti warna otomatis untuk hati (Soft transition)
+        setInterval(() => {
+            if(themeIndex === 0) { // Hanya auto-change jika di tema awal agar tidak tabrakan
+                 const heart = document.getElementById('heart-container');
+                 const randomColor = themes[Math.floor(Math.random() * themes.length)].heart;
+                 heart.style.color = randomColor;
+            }
+        }, 3000);
+    </script>
+
+</body>
+</html>
