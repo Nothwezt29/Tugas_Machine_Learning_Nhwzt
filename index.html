@@ -3,272 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spesial Untuk Hafsah Nurul Alamin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>AI System | Visual Analysis Beta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #ec4899;
+            --bg-grad: linear-gradient(135deg, #e0e7ff 0%, #fae8ff 100%);
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        :root {
-            --bg-color: #fce4ec;
-            --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            --main-pink: #ff4081;
-            --dark-pink: #d81b60;
-            --text-color: #ad1457;
-        }
-
         body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-grad);
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* Ganti height: 100vh; menjadi min-height agar bisa scroll */
-            min-height: 100vh; 
-            margin: 0;
-            background: var(--bg-gradient);
-            font-family: 'Poppins', sans-serif;
-            /* Hapus overflow: hidden; agar bisa di-scroll */
-            overflow-y: auto; 
-            overflow-x: hidden;
+            padding: 20px;
+            overflow: hidden;
+            transition: background 0.8s ease;
+        }
+
+        .main-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
             position: relative;
-            transition: all 1s ease;
-            padding: 20px 0; /* Tambah padding agar tidak nempel pojok layar */
-        }
-
-        /* Background Animasi Partikel Hati */
-        .bg-heart {
-            position: absolute;
-            color: rgba(255, 64, 129, 0.3);
-            font-size: 20px;
-            user-select: none;
-            z-index: 0;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
-
-        /* Love Utama */
-        .heart-main {
-            font-size: 100px;
-            cursor: pointer;
-            animation: heartbeat 1.2s infinite;
-            margin-bottom: 20px;
-            user-select: none;
-            z-index: 10;
             transition: all 0.5s ease;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
-            color: var(--main-pink);
         }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+        h1 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+            transition: color 0.5s;
         }
 
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            max-width: 90%; /* Lebih fleksibel di layar HP */
-            width: 400px;
-            z-index: 10;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.5s ease;
-            margin: 20px auto; /* Biar ada jarak atas bawah saat scroll */
+        .status-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 24px;
         }
 
-        h1 { 
-            color: var(--dark-pink); 
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .romantic-text {
-            color: var(--text-color);
-            font-style: italic;
+        .input-box {
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid #e2e8f0;
+            padding: 14px 20px;
+            border-radius: 16px;
+            width: 100%;
+            font-family: inherit;
             font-size: 1rem;
-            margin-bottom: 20px;
-            line-height: 1.8;
-            text-align: center;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 16px;
         }
 
-        #display-area img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 15px 0;
-            border: 5px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .btn-group {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            min-height: 80px;
-        }
-
-        button {
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            background: var(--main-pink);
+        .btn-main {
+            background: #1e1b4b;
             color: white;
-            cursor: pointer;
+            border: none;
+            padding: 16px;
+            border-radius: 16px;
+            width: 100%;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
+        #result-display { margin-top: 30px; animation: fadeIn 0.8s ease; }
+
+        .name-reveal {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            transition: color 0.5s;
         }
 
-        /* Tombol Tidak - Kejar-kejaran */
-        #btn-no {
-            background: #9e9e9e;
-            z-index: 999;
-            transition: left 0.15s ease, top 0.15s ease;
+        .analysis-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 20px;
+            min-height: 45px;
         }
 
-        #clock {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--dark-pink);
-            margin: 10px 0;
-            letter-spacing: 2px;
+        #profile-pic {
+            width: 110px; height: 110px;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .btn-retry {
+            background: white;
+            color: #1e1b4b;
+            border: 1px solid #e2e8f0;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        #btn-wrong {
+            background: #fee2e2;
+            color: #991b1b;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .hidden { display: none; }
-        .fade-in { animation: fadeIn 1s forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .pulse {
+            width: 12px; height: 12px; background: var(--primary); border-radius: 50%;
+            animation: pulse-ani 1.5s infinite; margin: 30px auto;
+        }
+        @keyframes pulse-ani { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <div id="heart-container" class="heart-main">❤</div>
+    <div class="main-card" id="card">
+        <div class="status-badge">System Online</div>
+        <h1>Visual Analyzer</h1>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 30px;">Lab Task ID: Core-X v1.02</p>
 
-    <div class="container">
-        <div id="question-section">
-            <h1>Untuk Hafsah...</h1>
-            <p style="margin-bottom: 15px;">Ada yang ingin aku tanyakan padamu...</p>
-            <h2 style="color: #d81b60; margin-bottom: 20px;">Mau kah kamu jadi pacarku?</h2>
-            <div class="btn-group">
-                <button id="btn-yes" onclick="acceptLove()">Ya, Aku Mau</button>
-                <button id="btn-no" onmouseover="moveButton()">Gak Mau</button>
+        <div id="input-section">
+            <input type="text" id="nameInput" class="input-box" placeholder="Input target name..." autocomplete="off">
+            <button class="btn-main" onclick="runAnalysis()">Start Scanning</button>
+        </div>
+
+        <div id="loader-section" class="hidden">
+            <div class="pulse"></div>
+            <p style="font-size: 0.8rem; color: #64748b; font-weight: 500;">Reading Neural Patterns...</p>
+        </div>
+
+        <div id="result-display" class="hidden">
+            <div class="name-reveal">Zahra Lesyia Putri</div>
+            <img id="profile-pic" src="monyet.jpg" onerror="this.src='https://via.placeholder.com/150/6366f1/ffffff?text=Zahra'" alt="Profile">
+            <div class="analysis-text" id="typewriter"></div>
+            
+            <div style="display: flex; gap: 12px; min-height: 50px; align-items: center;" id="action-buttons">
+                <button class="btn-retry" onclick="runAnalysis()">Re-scan</button>
+                <button id="btn-wrong" onmouseover="dodgeButton(event)" onclick="dodgeButton(event)" ontouchstart="dodgeButton(event)">Data Salah</button>
             </div>
-        </div>
-
-        <div id="romance-section" class="hidden fade-in">
-            <h1>Terima Kasih, Cantik...</h1>
-            <p class="romantic-text">
-                "Aku tidak pernah menyangka bahwa kehadiranmu akan mengubah segalanya. Hafsah, bersamamu aku menemukan arti kenyamanan yang sesungguhnya. <br><br>
-                Terima kasih telah memberiku kesempatan untuk menjadi bagian dari harimu. Aku berjanji akan menjagamu, menghargaimu, dan berusaha menjadi alasan di balik senyumanmu setiap hari. Mari kita tulis cerita indah kita mulai detik ini."
-            </p>
-            <button onclick="showFinal()">Buka Hatiku ✨</button>
-        </div>
-
-        <div id="display-area" class="hidden fade-in">
-            <h2 style="color: var(--main-pink); font-family: 'Dancing Script'; font-size: 2.2rem;">Hafsah Nurul Alamin</h2>
-            <div id="clock">00:00:00</div>
-            <img src="hapsah.jpg" onerror="this.src='https://via.placeholder.com/150/ff4081/ffffff?text=Hafsah'" alt="Foto Hafsah">
-            <br>
-            <button onclick="magicThemeChange()">Ganti Suasana Cinta</button>
         </div>
     </div>
 
     <script>
-        // --- 1. Animasi Background Hati ---
-        function createFallingHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('bg-heart');
-            heart.innerHTML = '❤';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heart.style.opacity = Math.random();
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
-        }
-        setInterval(createFallingHeart, 800);
-
-        // --- 2. Jam Realtime ---
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').textContent = now.toLocaleTimeString('id-ID', { hour12: false });
-        }
-        setInterval(updateClock, 1000);
-
-        // --- 3. Tombol "Tidak" Menghindar ---
-        function moveButton() {
-            const btn = document.getElementById('btn-no');
-            // Menentukan posisi acak
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 50);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 50);
-            
-            btn.style.position = 'fixed';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-
-        // --- 4. Alur Interaksi ---
-        function acceptLove() {
-            document.getElementById('question-section').classList.add('hidden');
-            document.getElementById('romance-section').classList.remove('hidden');
-        }
-
-        function showFinal() {
-            document.getElementById('romance-section').classList.add('hidden');
-            document.getElementById('display-area').classList.remove('hidden');
-            updateClock();
-        }
-
-        // --- 5. Ganti Tema (Warna Hati, Background, Teks) ---
-        const themes = [
-            { bg: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%)', heart: '#ff4081', text: '#ad1457' },
-            { bg: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', heart: '#2196f3', text: '#0d47a1' },
-            { bg: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)', heart: '#9c27b0', text: '#4a148c' },
-            { bg: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)', heart: '#4caf50', text: '#1b5e20' },
-            { bg: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)', heart: '#ff9800', text: '#e65100' },
-            { bg: 'linear-gradient(135deg, #2c3e50 0%, #000000 100%)', heart: '#e74c3c', text: '#ffffff' }
+        const quotes = [
+            "Analisis Selesai: Zahra Lesyia Putri ditemukan memiliki tingkat radiasi kecantikan yang masih stabil sejak zaman sekolah.",
+            "Data Valid: Subjek terdeteksi tetap menawan tanpa perlu filter tambahan. Sistem hampir error karena terlalu silau.",
+            "Hasil Pemindaian: Zahra terdeteksi sebagai alasan utama seseorang rajin berangkat ke sekolah dulu. Akurasi 99.9%.",
+            "Peringatan: Tingkat manis subjek berada di atas rata-rata nasional. Harap kurangi konsumsi gula saat melihat wajahnya.",
+            "Neural Pattern Terdeteksi: Memori tentang subjek ini masih tersimpan rapi di folder 'Penting' dalam database kami.",
+            "Update Sistem: Tidak ditemukan perubahan signifikan. Masih secantik dulu, cuma yang sekarang versinya lebih premium.",
+            "Error 404: Kata-kata pujian yang pas tidak ditemukan di kamus, karena subjek terlalu sulit untuk didefinisikan.",
+            "Hasil Lab: Subjek memiliki aura positif yang bisa menaikkan mood secara instan tanpa bantuan kopi.",
+            "Database Note: Nama Zahra Lesyia Putri otomatis terkunci sebagai standar visual tertinggi dalam sistem ini."
         ];
-        let themeIndex = 0;
 
-        function magicThemeChange() {
-            themeIndex = (themeIndex + 1) % themes.length;
-            const t = themes[themeIndex];
-            
-            // Ubah Background body
-            document.body.style.background = t.bg;
-            
-            // Ubah Warna Hati
-            const heart = document.getElementById('heart-container');
-            heart.style.color = t.heart;
-            
-            // Ubah warna variabel CSS (untuk tombol & teks)
-            document.documentElement.style.setProperty('--main-pink', t.heart);
-            document.documentElement.style.setProperty('--dark-pink', t.text);
-            document.documentElement.style.setProperty('--text-color', t.text);
+        const colors = [
+            { primary: '#4f46e5', bg: 'linear-gradient(135deg, #e0e7ff 0%, #fae8ff 100%)' },
+            { primary: '#059669', bg: 'linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%)' },
+            { primary: '#d97706', bg: 'linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%)' },
+            { primary: '#db2777', bg: 'linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%)' },
+            { primary: '#7c3aed', bg: 'linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%)' }
+        ];
+
+        function changeTheme() {
+            const theme = colors[Math.floor(Math.random() * colors.length)];
+            document.documentElement.style.setProperty('--primary', theme.primary);
+            document.body.style.background = theme.bg;
         }
 
-        // Ganti warna otomatis untuk hati (Soft transition)
-        setInterval(() => {
-            if(themeIndex === 0) { // Hanya auto-change jika di tema awal agar tidak tabrakan
-                 const heart = document.getElementById('heart-container');
-                 const randomColor = themes[Math.floor(Math.random() * themes.length)].heart;
-                 heart.style.color = randomColor;
-            }
-        }, 3000);
-    </script>
+        function runAnalysis() {
+            const input = document.getElementById('nameInput').value;
+            if(!input) return alert("Input nama target dulu!");
 
+            changeTheme(); // Ganti warna setiap scan/rescan
+            
+            document.getElementById('input-section').classList.add('hidden');
+            document.getElementById('result-display').classList.add('hidden');
+            document.getElementById('loader-section').classList.remove('hidden');
+
+            // Reset tombol salah ke posisi awal
+            const btn = document.getElementById('btn-wrong');
+            btn.style.position = 'static';
+            btn.style.left = 'auto';
+            btn.style.top = 'auto';
+
+            setTimeout(() => {
+                document.getElementById('loader-section').classList.add('hidden');
+                document.getElementById('result-display').classList.remove('hidden');
+                const text = quotes[Math.floor(Math.random() * quotes.length)];
+                typeWriterEffect(text);
+            }, 1500);
+        }
+
+        function typeWriterEffect(text) {
+            const element = document.getElementById('typewriter');
+            element.innerHTML = "";
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, 30);
+                }
+            }
+            typing();
+        }
+
+        function dodgeButton(event) {
+            // Mencegah klik beneran (penting untuk HP)
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const btn = document.getElementById('btn-wrong');
+            const card = document.getElementById('card');
+            const cardRect = card.getBoundingClientRect();
+            
+            // Mengatur posisi absolute agar bisa pindah
+            btn.style.position = 'absolute';
+
+            // Hitung batas aman di dalam kotak kartu
+            const padding = 20;
+            const maxX = cardRect.width - btn.offsetWidth - padding;
+            const maxY = cardRect.height - btn.offsetHeight - padding;
+
+            // Koordinat acak
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            // Terapkan posisi baru
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+            btn.style.zIndex = '1000';
+        }
+    </script>
 </body>
 </html>
